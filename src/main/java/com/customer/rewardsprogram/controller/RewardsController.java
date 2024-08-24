@@ -5,7 +5,9 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CompletableFuture;
 
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,8 +33,9 @@ public class RewardsController {
 		return rewardsService.getRewardPoints(customerTransactions);
 	}
 
+	@Async
 	@GetMapping("/calculate")
-	public Map<String, Object> calculateRewardsForDataset() {
+	public CompletableFuture<Map<String, Object>> calculateRewardsForDataset() {
 		 Map<String, List<RewardsTransaction>> customerTransactions = new HashMap<>();
 
 	        customerTransactions.put("C1", Arrays.asList(
@@ -48,8 +51,7 @@ public class RewardsController {
 	                new RewardsTransaction("C2", 130.0, LocalDate.of(2024, 8, 15))
 	        ));
 	        
-	     // Reuse the existing POST logic to calculate rewards
-	        return calculateRewards(customerTransactions);
+	     return CompletableFuture.completedFuture(rewardsService.getRewardPoints(customerTransactions));
 	}
 	
 }
