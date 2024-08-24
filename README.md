@@ -31,31 +31,62 @@ Technologies Used
 	•	JUnit for testing
 Example request:
 
-curl -X GET http://localhost:8080/api/rewards
+curl --location 'http://localhost:8080/api/rewards/calculate' \
+--header 'Content-Type: application/json' \
+--header 'Cookie: JSESSIONID=719E2E7DE9619483827DE6CD27DEC420' \
+--data '{
+    "C001": [
+        {
+            "amount": 120,
+            "date": "2024-01-15"
+        },
+        {
+            "amount": 80,
+            "date": "2024-02-15"
+        },
+        {
+            "amount": 150,
+            "date": "2024-03-15"
+        }
+    ],
+    "C002": [
+        {
+            "amount": 100,
+            "date": "2024-01-10"
+        },
+        {
+            "amount": 150,
+            "date": "2024-02-10"
+        },
+        {
+            "amount": 120,
+            "date": "2024-03-10"
+        }
+    ]
+}'
 
 Example response:
-
 {
-  "customers": [
-    {
-      "customerId": "C001",
-      "monthlyRewards": {
-        "January": 150,
-        "February": 220,
-        "March": 300
-      },
-      "totalRewards": 670
-    },
-    {
-      "customerId": "C002",
-      "monthlyRewards": {
-        "January": 100,
-        "February": 180,
-        "March": 240
-      },
-      "totalRewards": 520
-    }
-  ]
+    "customers": [
+        {
+            "customerId": "C001",
+            "monthlyRewards": {
+                "JANUARY": 90,
+                "MARCH": 150,
+                "FEBRUARY": 30
+            },
+            "totalRewards": 270
+        },
+        {
+            "customerId": "C002",
+            "monthlyRewards": {
+                "JANUARY": 50,
+                "MARCH": 90,
+                "FEBRUARY": 150
+            },
+            "totalRewards": 290
+        }
+    ]
 }
 
 
