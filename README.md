@@ -89,4 +89,30 @@ Example response:
     ]
 }
 
+curl --location 'http://localhost:8080/api/rewards/calculate' \
+--header 'Cookie: JSESSIONID=719E2E7DE9619483827DE6CD27DEC420'
+
+Expected response:
+{
+    "customers": [
+        {
+            "customerId": "C1",
+            "monthlyRewards": {
+                "JUNE": 160,
+                "AUGUST": 0,
+                "JULY": 25
+            },
+            "totalRewards": 185
+        },
+        {
+            "customerId": "C2",
+            "monthlyRewards": {
+                "JUNE": 50,
+                "AUGUST": 110,
+                "JULY": 35
+            },
+            "totalRewards": 195
+        }
+    ]
+}
 
