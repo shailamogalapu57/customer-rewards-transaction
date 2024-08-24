@@ -1,6 +1,5 @@
 package com.customer.rewardsprogram.controller;
 
-import java.time.Month;
 import java.util.List;
 import java.util.Map;
 
@@ -23,7 +22,8 @@ public class RewardsController {
 	}
 
 	@PostMapping("/calculate")
-	public Map<String, Map<Month, Integer>> calculateRewards(@RequestBody List<RewardsTransaction> transactions) {
-		return rewardsService.getRewardPoints(transactions);
+	public Map<String,Object> calculateRewards(@RequestBody Map<String, List<RewardsTransaction>> customerTransactions) {
+		 
+		return rewardsService.getRewardPoints(customerTransactions);
 	}
 }

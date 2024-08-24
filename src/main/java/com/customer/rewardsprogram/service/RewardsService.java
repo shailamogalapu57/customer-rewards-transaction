@@ -1,6 +1,5 @@
 package com.customer.rewardsprogram.service;
 
-import java.time.Month;
 import java.util.List;
 import java.util.Map;
 
@@ -12,7 +11,7 @@ import com.customer.rewardsprogram.utils.RewardsCalculator;
 @Service
 public class RewardsService {
 
-	public Map<String, Map<Month, Integer>> getRewardPoints(List<RewardsTransaction> transactions) {
-		return RewardsCalculator.calculateRewards(transactions);
+	public Map<String, Object> getRewardPoints(Map<String, List<RewardsTransaction>> customerTransactions) {
+		return RewardsCalculator.calculateRewardsTotalMonthly(customerTransactions);
 	}
 }
