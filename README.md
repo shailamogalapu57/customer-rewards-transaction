@@ -91,7 +91,17 @@ Example response:
 
 curl --location 'http://localhost:8080/api/rewards/calculate' \
 --header 'Cookie: JSESSIONID=719E2E7DE9619483827DE6CD27DEC420'
-
+Input:
+"C1": Arrays.asList(
+	                new RewardsTransaction("C1", 120.0, LocalDate.of(2024, 6, 15)),
+	                new RewardsTransaction("C1", 75.0, LocalDate.of(2024, 7, 10)),
+	                new RewardsTransaction("C1", 50.0, LocalDate.of(2024, 8, 5)),
+	                new RewardsTransaction("C1", 110.0, LocalDate.of(2024, 6, 20))
+		 "C2": Arrays.asList(
+	                new RewardsTransaction("C2", 100.0, LocalDate.of(2024, 6, 10)),
+	                new RewardsTransaction("C2", 85.0, LocalDate.of(2024, 7, 12)),
+	                new RewardsTransaction("C2", 130.0, LocalDate.of(2024, 8, 15))
+	        ));
 Expected response:
 {
     "customers": [
