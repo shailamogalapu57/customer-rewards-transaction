@@ -66,7 +66,9 @@ curl --location 'http://localhost:8080/api/rewards/calculate' \
 }'
 
 Example response:
+'''json
 {
+ "referenceNumber": "e12d2ab5-b39b-4119-a405-644806ed9ba8",
     "customers": [
         {
             "customerId": "C001",
@@ -88,7 +90,7 @@ Example response:
         }
     ]
 }
-
+'''
 curl --location 'http://localhost:8080/api/rewards/calculate' \
 --header 'Cookie: JSESSIONID=719E2E7DE9619483827DE6CD27DEC420'
 Input:
@@ -103,7 +105,9 @@ Input:
 	                new RewardsTransaction("C2", 130.0, LocalDate.of(2024, 8, 15))
 	        ));
 Expected response:
+'''json
 {
+    "referenceNumber": "e12d2ab5-b39b-4119-a405-644806ed9ba8",
     "customers": [
         {
             "customerId": "C1",
@@ -125,4 +129,4 @@ Expected response:
         }
     ]
 }
-
+'''
